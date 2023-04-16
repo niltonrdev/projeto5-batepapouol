@@ -9,30 +9,60 @@
     <link rel="stylesheet" href="./CSS/reset.css">
     <link rel="stylesheet" href="./CSS/estilo.css">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+ 
 
 </head>
 <body>
+    
     <div class="container">
+        <div class="menu-fundo escondido" onclick="abrirMenu()"></div>
         <div class="cabecalho">
             <div class="logo">
                 <img src="./imagens/bate-papo-uol.png">
             </div>
-            <div class="icone">
+            <div class="icone" onclick="abrirMenu()">
                 <ion-icon name="people-sharp"></ion-icon>
             </div>
         </div>
-        <div class="corpo">
-            <div class="msg-status">msg de status</div>
-            <div class="msg">msg</div>
-            <div class="msg-reservada">msg reservada</div>
-        </div>
+        <ul class="corpo">
+           <li class="msg-status">
+            <span class="hora">(10:10)</span>
+            <strong>Joao</strong>
+            <span>entra na sala</span>
+           </li>
+            <li class="msg">
+                <span class="hora">(10:10)</span>
+                <strong>Maria</strong>
+                <span>para</span>
+                <strong>Joao</strong>
+                <span>oi</span>
+            </li>
+            <li class="msg-reservada">
+                <span class="hora">(10:10)</span>
+                <strong>joao</strong>
+                <span>reservadamente para</span>
+                <strong>maria</strong>
+                <span>opa</span>
+            </li>
+        </ul>
         <div class="rodape">
-            <div class="texto">Escreva aqui...</div>
+            <input placeholder="Escreva aqui..." class="texto"></input>
             <div class="icone-rodape">
-                <ion-icon name="paper-plane-outline"></ion-icon>
+                <button onclick="entraNaSala()">
+                    <ion-icon name="paper-plane-outline"></ion-icon>
+                </button>
             </div>
         </div>
+   
+
+        <aside class="menu-lateral escondido" onclick="abrirMenu()">
+
+        </aside>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>

@@ -1,14 +1,20 @@
 *{
     box-sizing: border-box;
 }
+
 body {
-    
-    
+    display: flex;
+    flex-direction: column;
+    background: #f3f3f3;
+    font-family: "Roboto", sans-serif;
+    color: #333333;
+        
 }
 .container {
     width: 375px;
     height: auto;
     background-color: #E5E5E5;
+    position: relative;
 }
 .cabecalho {
     width: 100%;
@@ -76,6 +82,13 @@ body {
     background: #FFDEDE;
     border-radius: 2px;
     }
+.hora {
+    margin-right: 5px;
+    color: #b8b8b8;
+}
+strong {
+    font-weight: bold;
+  }
 .rodape {
     width: 100%;
     height: 80px; 
@@ -91,6 +104,7 @@ body {
     position: fixed;
     left: 0;
     bottom: 0;
+    z-index: 1;
 
     max-width: 375px;
 }
@@ -114,4 +128,28 @@ body {
 .icone-rodape ion-icon {
     width: 26px;
     height: 26px;
+}
+.menu-fundo{
+    background-color: rgba(0,0,0,0.8);
+    width: 375px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    transition: all 150ms linear;
+}
+aside.menu-lateral {
+    width: 259px;
+    height: 100%;
+    background-color:#FFFFFF;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 4;
+    transition: all 300ms linear;
+}
+.escondido {
+    display: none;
 }
