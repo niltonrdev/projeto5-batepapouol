@@ -18,17 +18,17 @@
 <body>
     
     <div class="container">
-        <div class="menu-fundo escondido" onclick="abrirMenu()"></div>
+        <div data-test="overlay"  class="menu-fundo escondido" onclick="abrirMenu()"></div>
         <div class="cabecalho">
             <div class="logo">
                 <img src="./imagens/bate-papo-uol.png">
             </div>
-            <div class="icone" onclick="abrirMenu()">
+            <div data-test="open-participants" class="icone" onclick="abrirMenu()">
                 <ion-icon name="people-sharp"></ion-icon>
             </div>
         </div>
         <ul class="corpo">
-           <li class="msg-status">
+          <!-- <li class="msg-status">
             <span class="hora">(10:10)</span>
             <strong>Joao</strong>
             <span>entra na sala</span>
@@ -46,12 +46,12 @@
                 <span>reservadamente para</span>
                 <strong>maria</strong>
                 <span>opa</span>
-            </li>
+            </li>-->
         </ul>
         <div class="rodape">
-            <input placeholder="Escreva aqui..." class="texto"></input>
+            <input data-test="input-message" placeholder="Escreva aqui..." class="texto"></input>
             <div class="icone-rodape">
-                <button onclick="enviarMensagem()">
+                <button data-test="send-message" onclick="enviarMensagem()">
                     <ion-icon name="paper-plane-outline"></ion-icon>
                 </button>
             </div>
@@ -61,26 +61,26 @@
         <div class="menu-lateral escondido">
             <h2 class="titulo-menu">Escolha um contato para enviar mensagem:</h2>
             <ul class="contatos">
-                <li class="visibilidade-publico selecionado">
+                <li data-test="all" class="visibilidade-publico selecionado">
                     <ion-icon name="people"></ion-icon><span class="nome">Todos</span><ion-icon class="check" name="checkmark-outline">
                     </ion-icon>
                 </li>
-                <li class="visibilidade-publico">
+                <li data-test="participant" class="visibilidade-publico">
                     <ion-icon name="person-circle"></ion-icon><span class="nome">Teste</span><ion-icon class="check" name="checkmark-outline">
                     </ion-icon>
                 </li>
-                <li class="visibilidade-publico">
+                <li data-test="participant" class="visibilidade-publico">
                     <ion-icon name="person-circle"></ion-icon><span class="nome">Maria</span><ion-icon class="check" name="checkmark-outline">
                     </ion-icon>
                 </li>
             </ul>
             <h2 class="titulo-menu">Escolha a visibilidade:</h2>
             <ul class="visibilidade">
-                <li class="visibilidade-publico">
+                <li data-test="public" class="visibilidade-publico">
                     <ion-icon name="lock-open" ></ion-icon>Público<ion-icon class="check" name="checkmark-outline">
                     </ion-icon>
                 </li>
-                <li class="visibilidade-privado selecionado">
+                <li data-test="private"  data-test="check" class="visibilidade-privado selecionado">
                     <ion-icon name="lock-closed" ></ion-icon>Reservadamente<ion-icon class="check" name="checkmark-outline">
                     </ion-icon>
                 </li>

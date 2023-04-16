@@ -63,14 +63,14 @@ let idIntervalMsg;
 
             if (msg.type === 'status'){
                 template = `
-                <li class="msg-status">
+                <li data-test="message" class="msg-status">
                     <span class="hora">(${msg.time})</span>
                     <strong>${msg.from}</strong>
                     <span>${msg.text}</span>
                 </li>`;
             } else if (msg.to === 'Todos'){
             template = `
-                <li class="msg">
+                <li data-test="message" class="msg">
                 <span class="hora">(${msg.time})</span>
                     <strong>${msg.from}</strong>
                     <span>para</span>
@@ -79,7 +79,7 @@ let idIntervalMsg;
                 </li>`;
             }else {
                 template = `
-                <li class="msg-reservada">
+                <li data-test="message" class="msg-reservada">
                     <span class="hora">(${msg.time})</span>
                     <strong>${msg.from}</strong>
                     <span>reservadamente para</span>
