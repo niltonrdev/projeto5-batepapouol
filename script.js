@@ -3,13 +3,8 @@ axios.defaults.headers.common['Authorization'] = 'mDgeBaCNqC4q3wJycesAXtWG';
 const mensagens = [];
 let nome;
 let idIntervalStatus;
+let idIntervalMsg;
 
-    function abrirMenu(){
-        const menuFundo = document.querySelector('.menu-fundo');
-        const menuLateral = document.querySelector('.menu-lateral');
-        menuFundo.classList.toggle('escondido');
-        menuLateral.classList.toggle('escondido');
-    }
 
     function receberResposta(){
         console.log("recebida com sucesso");
@@ -25,9 +20,11 @@ let idIntervalStatus;
 
         promessa.then( receberResposta );  
         promessa.catch( deuErro ); 
-               
+
         receberMensagens();
+
         idIntervalStatus = setInterval(manterConexao, 5000);
+        idIntervalMsg = setInterval(receberMensagens, 3000);
        
     }   
 
@@ -96,4 +93,34 @@ let idIntervalStatus;
         }
 
     }
+    function msgEnviada(resposta){
+        console.log("enviada");
+    }
+    function msgNaoEnviada(erro){
+        console.log("msg não enviada");
+    }
+
+    function enviarMensagem(){
+        const msg = document.querySelector('.texto').value;
+        console.log(msg);
+        const novaMsg = {
+            from: nome,
+            to: "Todos",
+            text: msg,
+            type: "message"
+        }
+        const promessa = axios.post(`https://mock-api.driven.com.br/api/vm/uol/messages`, novaMsg);
+        promessa.then(msgEnviada);
+        promessa.catch(msgNaoEnviada);
+
+    }
+
+    function abrirMenu(){
+        const menuFundo = document.querySelector('.menu-fundo');
+        const menuLateral = document.querySelector('.menu-lateral');
+        menuFundo.classList.toggle('escondido');
+        menuLateral.classList.toggle('escondido');
+    }
+
+
     entraNaSala();
