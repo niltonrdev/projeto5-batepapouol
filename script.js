@@ -9,7 +9,7 @@ function abrirMenu(){
 }
 
 const mensagens = [];
-
+/*
     function entraNaSala(){
         let nome = {
             name: "João"
@@ -30,32 +30,57 @@ const mensagens = [];
     function deuErro(){
         console.log("não foi recebida");
     }
-
+*/
     function receberMensagens(){
         const promessa = axios.get('https://mock-api.driven.com.br/api/vm/uol/messages');
         console.log(promessa);
+        promessa.then(renderizarMensagens);
 
-        renderizarMensagens();
+        
 
     }
     
-    function renderizarMensagens(){
-        let divMensagens = document.querySelector('.corpo');
-        divMensagens = '';
+    function renderizarMensagens(resposta){
+        const listaMensagens = resposta.data;
+        const corpoMensagens = document.querySelector('.corpo');
+        corpoMensagens.innerHTML = '';
+        
+        for(let i = 0; i < listaMensagens.length; i++){
+            let msg = listaMensagens[i];
+            
+            let template;
 
-        for( let i = 0; i < mensagens.length; i++){
-            let msg = mensagens[i];
-        console.log(divMensagens);
+            if (msg.type === 'status'){
+                template = `
+                <li class="msg-status">
+                    <span class="hora">(${msg.time})</span>
+                    <strong>${msg.from}</strong>
+                    <span>${msg.text}</span>
+                </li>`;
+            } else if (msg.to === 'Todos'){
+            template = `
+                <li class="msg">
+                <span class="hora">(${msg.time})</span>
+                    <strong>${msg.from}</strong>
+                    <span>para</span>
+                    <strong>${msg.to}</strong>
+                    <span>${msg.text}</span>
+                </li>`;
+            }else {
+                template = `
+                <li class="msg-reservada">
+                    <span class="hora">(${msg.time})</span>
+                    <strong>${msg.from}</strong>
+                    <span>reservadamente para</span>
+                    <strong>${msg.to}</strong>
+                    <span>${msg.text}</span>
+                </li>`;
 
-        divMensagens.innerHTML += 
-              ` <div class="msg">
-                ${msg.from}
-                ${msg.text}
-                ${msg.time}
-                ${msg.to}
-                ${msg.type}
-                </div>
-              `
+            }
+
+            corpoMensagens.innerHTML += template;
         }
-        console.log(divMensagens);
+
     }
+
+    receberMensagens();

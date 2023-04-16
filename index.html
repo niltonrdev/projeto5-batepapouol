@@ -58,9 +58,24 @@
         </div>
    
 
-        <aside class="menu-lateral escondido" onclick="abrirMenu()">
+        <div class="menu-lateral escondido">
+            <h2 class="titulo-menu">Escolha um contato para enviar mensagem:</h2>
+            <ul class="contatos">
 
-        </aside>
+            </ul>
+            <h2 class="titulo-menu">Escolha a visibilidade:</h2>
+            <ul class="visibilidade">
+                <li class="visibilidade-publico">
+                    <ion-icon name="lock-open" ></ion-icon>Público<ion-icon class="check" name="checkmark-outline">
+                    </ion-icon>
+                </li>
+                <li class="visibilidade-privado selecionado">
+                    <ion-icon name="lock-closed" ></ion-icon>Reservadamente<ion-icon class="check" name="checkmark-outline">
+                    </ion-icon>
+                </li>
+            </ul>
+
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./script.js"></script>
