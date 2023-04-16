@@ -51,7 +51,7 @@
         <div class="rodape">
             <input placeholder="Escreva aqui..." class="texto"></input>
             <div class="icone-rodape">
-                <button onclick="entraNaSala()">
+                <button onclick="enviarMensagem()">
                     <ion-icon name="paper-plane-outline"></ion-icon>
                 </button>
             </div>
@@ -61,7 +61,18 @@
         <div class="menu-lateral escondido">
             <h2 class="titulo-menu">Escolha um contato para enviar mensagem:</h2>
             <ul class="contatos">
-
+                <li class="visibilidade-publico selecionado">
+                    <ion-icon name="people"></ion-icon><span class="nome">Todos</span><ion-icon class="check" name="checkmark-outline">
+                    </ion-icon>
+                </li>
+                <li class="visibilidade-publico">
+                    <ion-icon name="person-circle"></ion-icon><span class="nome">Teste</span><ion-icon class="check" name="checkmark-outline">
+                    </ion-icon>
+                </li>
+                <li class="visibilidade-publico">
+                    <ion-icon name="person-circle"></ion-icon><span class="nome">Maria</span><ion-icon class="check" name="checkmark-outline">
+                    </ion-icon>
+                </li>
             </ul>
             <h2 class="titulo-menu">Escolha a visibilidade:</h2>
             <ul class="visibilidade">

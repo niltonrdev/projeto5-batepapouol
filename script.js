@@ -1,28 +1,15 @@
 
 axios.defaults.headers.common['Authorization'] = 'mDgeBaCNqC4q3wJycesAXtWG';
-
-function abrirMenu(){
-    const menuFundo = document.querySelector('.menu-fundo');
-    const menuLateral = document.querySelector('.menu-lateral');
-    menuFundo.classList.toggle('escondido');
-    menuLateral.classList.toggle('escondido');
-}
-
 const mensagens = [];
-/*
-    function entraNaSala(){
-        let nome = {
-            name: "João"
-        }
+let nome;
+let idIntervalStatus;
 
-        const promessa = axios.post('https://mock-api.driven.com.br/api/vm/uol/participants', nome);    
-
-        promessa.then( receberResposta );  
-        promessa.catch( deuErro ); 
-        console.log('receita foi enviada ao servidor');   
-        
-        receberMensagens();
-    }   
+    function abrirMenu(){
+        const menuFundo = document.querySelector('.menu-fundo');
+        const menuLateral = document.querySelector('.menu-lateral');
+        menuFundo.classList.toggle('escondido');
+        menuLateral.classList.toggle('escondido');
+    }
 
     function receberResposta(){
         console.log("recebida com sucesso");
@@ -30,13 +17,40 @@ const mensagens = [];
     function deuErro(){
         console.log("não foi recebida");
     }
-*/
+
+    function entraNaSala(){
+        nome = prompt("Qual é o seu lindo nome? ")
+
+        const promessa = axios.post('https://mock-api.driven.com.br/api/vm/uol/participants', {name:nome});    
+
+        promessa.then( receberResposta );  
+        promessa.catch( deuErro ); 
+               
+        receberMensagens();
+        idIntervalStatus = setInterval(manterConexao, 5000);
+       
+    }   
+
+    function statusAtualizado(resposta){
+        console.log(resposta);
+        console.log("status atualizado");
+    }
+    function erroStatus(erro){
+        console.log(erro);
+        console.log("erro ao atualizar staus");
+    }
+
+
+    function manterConexao(){
+        const promessa = axios.post('https://mock-api.driven.com.br/api/vm/uol/status', {name:nome});
+        promessa.then(statusAtualizado);
+        promessa.catch(erroStatus);
+    }
+
     function receberMensagens(){
         const promessa = axios.get('https://mock-api.driven.com.br/api/vm/uol/messages');
         console.log(promessa);
         promessa.then(renderizarMensagens);
-
-        
 
     }
     
@@ -82,5 +96,4 @@ const mensagens = [];
         }
 
     }
-
-    receberMensagens();
+    entraNaSala();
