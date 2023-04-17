@@ -6,11 +6,16 @@ let idIntervalStatus;
 let idIntervalMsg;
 
 
-    function receberResposta(){
-        console.log("recebida com sucesso");
+    function receberResposta(resposta){
+        receberMensagens();
     }
-    function deuErro(){
-        console.log("não foi recebida");
+    function erroLogin(erro){
+        
+        if(erro.response.status === 400){
+            alert("Ja existe um nome igual ao seu, tente novamente!");
+            window.location.reload();
+        }
+        
     }
 
     function entraNaSala(){
@@ -19,9 +24,9 @@ let idIntervalMsg;
         const promessa = axios.post('https://mock-api.driven.com.br/api/vm/uol/participants', {name:nome});    
 
         promessa.then( receberResposta );  
-        promessa.catch( deuErro ); 
+        promessa.catch( erroLogin ); 
 
-        receberMensagens();
+        
 
         idIntervalStatus = setInterval(manterConexao, 5000);
         idIntervalMsg = setInterval(receberMensagens, 3000);
@@ -68,7 +73,7 @@ let idIntervalMsg;
                     <strong>${msg.from}</strong>
                     <span>${msg.text}</span>
                 </li>`;
-            } else if (msg.to === 'Todos'){
+            } else if (msg.type === 'message'){
             template = `
                 <li data-test="message" class="msg">
                 <span class="hora">(${msg.time})</span>
@@ -77,7 +82,7 @@ let idIntervalMsg;
                     <strong>${msg.to}</strong>
                     <span>${msg.text}</span>
                 </li>`;
-            }else {
+            }else if (msg.type === 'private_message'){
                 template = `
                 <li data-test="message" class="msg-reservada">
                     <span class="hora">(${msg.time})</span>
@@ -101,8 +106,9 @@ let idIntervalMsg;
     }
 
     function enviarMensagem(){
-        const msg = document.querySelector('.texto').value;
-        console.log(msg);
+        const input = document.querySelector('.texto');
+        const msg = input
+
         const novaMsg = {
             from: nome,
             to: "Todos",
@@ -111,9 +117,21 @@ let idIntervalMsg;
         }
         const promessa = axios.post(`https://mock-api.driven.com.br/api/vm/uol/messages`, novaMsg);
         promessa.then(msgEnviada);
+        promessa.then(() => {
+            input.value = '';
+        });
         promessa.catch(msgNaoEnviada);
-
+      
     }
+
+    document.getElementById("meuInput").addEventListener("keydown", function(event){
+        if(event.keyCode === 13){
+            event.preventDefault();
+            let mensagem = this.value;
+            enviarMensagem();
+            this.value = "";
+        }
+    });
 
     function abrirMenu(){
         const menuFundo = document.querySelector('.menu-fundo');

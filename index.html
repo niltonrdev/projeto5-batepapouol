@@ -18,7 +18,7 @@
 <body>
     
     <div class="container">
-        <div data-test="overlay"  class="menu-fundo escondido" onclick="abrirMenu()"></div>
+        <div data-test="overlay" class="menu-fundo escondido" onclick="abrirMenu()"></div>
         <div class="cabecalho">
             <div class="logo">
                 <img src="./imagens/bate-papo-uol.png">
@@ -49,11 +49,9 @@
             </li>-->
         </ul>
         <div class="rodape">
-            <input data-test="input-message" placeholder="Escreva aqui..." class="texto"></input>
+            <input data-test="input-message" placeholder="Escreva aqui..." id="meuInput" class="texto"></input>
             <div class="icone-rodape">
-                <button data-test="send-message" onclick="enviarMensagem()">
-                    <ion-icon name="paper-plane-outline"></ion-icon>
-                </button>
+                    <ion-icon data-test="send-message" onclick="enviarMensagem()" name="paper-plane-outline"></ion-icon>
             </div>
         </div>
    
