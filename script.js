@@ -40,6 +40,7 @@ let idIntervalMsg;
     function erroStatus(erro){
         console.log(erro);
         console.log("erro ao atualizar staus");
+        window.location.reload();
     }
 
 
@@ -107,7 +108,7 @@ let idIntervalMsg;
 
     function enviarMensagem(){
         const input = document.querySelector('.texto');
-        const msg = input
+        const msg = input.value;
 
         const novaMsg = {
             from: nome,
