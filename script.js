@@ -10,12 +10,12 @@ let idIntervalMsg;
         receberMensagens();
     }
     function erroLogin(erro){
-        
+      /*  
         if(erro.response.status === 400){
             alert("Ja existe um nome igual ao seu, tente novamente!");
             window.location.reload();
-        }
-        
+        }*/
+        window.location.reload();
     }
 
     function entraNaSala(){
@@ -40,7 +40,7 @@ let idIntervalMsg;
     function erroStatus(erro){
         console.log(erro);
         console.log("erro ao atualizar staus");
-        window.location.reload();
+        
     }
 
 
@@ -104,6 +104,7 @@ let idIntervalMsg;
     }
     function msgNaoEnviada(erro){
         console.log("msg não enviada");
+        window.location.reload();
     }
 
     function enviarMensagem(){

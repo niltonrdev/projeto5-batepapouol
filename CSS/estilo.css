@@ -112,7 +112,7 @@ strong {
     width: 145px;
     height: 30px;
 
-    font-family: 'Roboto';
+    font-family: "Roboto", sans-serif;
     font-style: italic;
     font-weight: 400;
     font-size: 18px;
@@ -121,9 +121,6 @@ strong {
     align-items: center;
 
     color: #000000;
-}
-.icone-rodape {
-  
 }
 .icone-rodape ion-icon {
     width: 26px;
